@@ -22,5 +22,14 @@
             }
             return totalRideFare/rides.Length;
         }
+        public InvoiceSummary GetMultipleRideFare1(Ride[] rides)
+        {
+            double totalRideFare = 0.0;
+            foreach (var ride in rides)
+            {
+                totalRideFare += this.CalulateFare(ride.rideDistance, ride.rideTime);
+            }
+            return new InvoiceSummary(totalRideFare/ rides.Length, rides.Length);
+        }
     }
 }
