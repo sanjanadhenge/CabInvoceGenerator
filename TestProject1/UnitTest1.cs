@@ -49,6 +49,15 @@ namespace TestProject1
             Assert.AreEqual(invoiceSummary.totalfare, 30.0);
 
         }
+        [Test]
+        public void Given_Parametrs_ShouldReturn_TotalFare()
+        {
+            CabInvoice cabInvoice = new CabInvoice();
+            RideOption rideOption = new RideOption();
+            RideOption result = rideOption.SetRideValues(RideOption.RideTypes.PREMIUM);
+            double fare = cabInvoice.CalulateFare(result.costPerKms, result.costPerMinute, result.minimumfare, 3.0, 5.0);
+            Assert.AreEqual(fare, 70.0);
+        }
 
     }
 }
