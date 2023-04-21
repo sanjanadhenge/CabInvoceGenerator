@@ -31,5 +31,14 @@
             }
             return new InvoiceSummary(totalRideFare/ rides.Length, rides.Length);
         }
+        RideRespository rideRespository = new RideRespository();
+        public void MapRidesTouser(string userID, Ride[] rides)
+        {
+            this.rideRespository.AddCabRides(userID, rides);
+        }
+        public InvoiceSummary GetInvoiceSummary(string userID)
+        {
+            return this.GetMultipleRideFare1(this.rideRespository.GetRides(userID));
+        }
     }
 }

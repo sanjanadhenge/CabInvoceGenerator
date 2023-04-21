@@ -29,5 +29,26 @@ namespace TestProject1
             Assert.AreEqual(30.0, inverseSummary.totalfare);
 
         }
+        [Test]
+        public void GivenUserId_WhenExecute_ShouldMatch()
+        {
+            Ride[] ride = { new Ride(3.0, 5.0), new Ride(2.0, 5.0) };
+            CabInvoice cabInvoice = new CabInvoice();
+            InvoiceSummary invoiceSummary = cabInvoice.GetMultipleRideFare1(ride);
+            InvoiceSummary expectedSummary = new InvoiceSummary(60.0, 2);
+            Assert.AreEqual(expectedSummary, invoiceSummary);
+
+        }
+        [Test]
+        public void GivenUserId_WhenExecute_ShouldReturn_Invoice()
+        {
+            Ride[] ride = { new Ride(3.0, 5.0), new Ride(2.0, 5.0) };
+            CabInvoice cabInvoice = new CabInvoice();
+            cabInvoice.MapRidesTouser("Sanjana", ride);
+            InvoiceSummary invoiceSummary = cabInvoice.GetInvoiceSummary("Sanjana");
+            Assert.AreEqual(invoiceSummary.totalfare, 30.0);
+
+        }
+
     }
 }
